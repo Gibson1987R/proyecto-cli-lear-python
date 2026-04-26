@@ -1,4 +1,5 @@
 import notas.nota as modelo
+from usuarios.validaciones import Validar
 
 class Notacciones:
     
@@ -6,7 +7,14 @@ class Notacciones:
         print(f'\nOk {usuario[1]}!!! Vamos a crear una nueva nota...')
 
         titulo = input('Introduce el titutlo de tu nota: ')
+        while not Validar.titulo_nota(titulo):
+            print("Error: El título debe tener al menos 3 caracteres.")
+            titulo = input('Introduce el titutlo de tu nota: ')
+
         descripcion = input('Mete el contenido de tu nota: ')
+        while not Validar.no_vacio(descripcion):
+            print("Error: El contenido no puede estar vacío.")
+            descripcion = input('Mete el contenido de tu nota: ')
 
         nota = modelo.Nota(usuario[0], usuario[3], titulo, descripcion)
         guardar = nota.guardar()
@@ -36,6 +44,9 @@ class Notacciones:
         print(f'\nOkey {usuario[1]} !!! Vamos a borrar notas')
 
         titulo = input('Introduce el titulo de la nota a borrar: ')
+        while not Validar.no_vacio(titulo):
+            print("Error: Debes introducir un título.")
+            titulo = input('Introduce el titulo de la nota a borrar: ')
 
         nota = modelo.Nota(usuario[0], "", titulo, "")
         eliminar = nota.eliminar()
