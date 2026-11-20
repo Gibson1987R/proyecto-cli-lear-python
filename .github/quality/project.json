@@ -1,0 +1,22 @@
+{
+  "setup_commands": [
+    [
+      "python",
+      "-m",
+      "pip",
+      "install",
+      "pytest"
+    ]
+  ],
+  "check_commands": [],
+  "test_commands": [
+    [
+      "python",
+      "-m",
+      "pytest",
+      "tests_validaciones.py",
+      "-q"
+    ]
+  ],
+  "note": "Suite pytest existente; revisar cobertura en el PR."
+}
